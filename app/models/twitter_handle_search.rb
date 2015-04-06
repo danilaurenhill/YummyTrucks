@@ -12,26 +12,12 @@ class TwitterHandleSearch
   #find recent tweets 
   #if the most recent tweet text contains key words
 
-  def self.get_location(handle)
-    #array = []
-    #keywords = ["st", "ave", "pm", "am"]
+  def self.get_location_tweet(handle)
     client = get_client
-    # food_truck_account = client.user(handle)
     twenty_tweets = client.user_timeline(handle)
-    twenty_tweets.each_with_object([]) do |tweet, new_array|
-      binding.pry
-      if tweet.include?("st")
-        return new_array << tweet
-      end
+    twenty_tweets.each do |tweet|
+      return tweet if tweet.text.downcase.include?(" st.")
     end
-    # most_recent_tweet = food_truck_account.tweet.text
-    # most_recent_tweet.sample do
-    # until most_recent_tweet.include?("st", "ave", "pm", "am") do
-    #   most_recent_tweet.text
-    # else 
-   # most_recent_location = most_recent_tweet.text
-    
-
   end
 
   def self.get_client
