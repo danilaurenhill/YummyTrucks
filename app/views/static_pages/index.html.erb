@@ -1,0 +1,8 @@
+<h1>This is the index</h1>
+
+<!-- make form that submits a post to the search action in food trucks controller -->
+<%=form_tag("/food_trucks/search", method: "post") do %>
+  <%= label_tag(:twitter_handle, "Search for:") %>
+  <%= text_field_tag(:twitter_handle) %>
+  <%= submit_tag("Search") %>
+<%end %>
