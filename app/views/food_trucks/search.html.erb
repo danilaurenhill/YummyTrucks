@@ -1,4 +1,11 @@
-<h1>Result</h1>
-<p><%= @content %></p>
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
 
-<p><a href="<%= @url %>">Link</a></p>
+<h1>Result</h1>
+<p>Tweet: <%= @tweet.text %></p>
+<p>FoodTruck: <%= @tweet.user.name %></p>
+<p>Truck Description: <%= @tweet.user.description %></p>
+<p>Number of Favorites: <%= @tweet.favorite_count %></p>
+
+<p>Link: <a href="https://twitter.com<%= @tweet.url.path %>">here</a></p>
