@@ -1,16 +1,38 @@
 class TwitterHandleSearch
   
+  URL = "https://twitter.com"
+
   DESIRABLE_WORDS = [" ave ", " ave.", "avenue", "st.", " st ", "street", "ln", "lane", " sq ", " & ", "Bway", "square"]
   REGEXES = [/\dst /, /\dnd/, /\drd/, /\dth /]
-
   UNDESIRABLE_WORDS = ["street food", "street cart"]
-  # URL = "https://twitter.com"
+
+  HANDLES = ["WaffleTruck", "VeganLunchTruck", "TheTreatsTruck"]
 
   def self.get_newest_tweet(handle)
     client = get_client
     food_truck_account = client.user(handle)
     food_truck_account.status
   end
+
+  def self.seed_database
+    HANDLES.each do |handle|
+      add_truck_to_database(handle)
+    end
+  end
+
+  def self.add_truck_to_database(twitter_handle)
+    client = get_client
+    info = client.user(twitter_handle)
+    food_truck = FoodTruck.new
+    food_truck.description = info.description
+    food_truck.twitter_id = info.id
+    food_truck.website = info.website_uris[0].attrs[:expanded_url]
+    food_truck.name = info.name
+    food_truck.handle = info.screen_name
+    food_truck.image_url = "http://pbs.twimg.com" + info.profile_image_uri.path
+    food_truck.save
+  end
+    
 
   #find recent tweets 
   #if the most recent tweet text contains key words

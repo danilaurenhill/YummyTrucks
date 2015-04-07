@@ -1,8 +1,29 @@
-<h1>This is the index</h1>
+<div class="container">
+  <div class="row">
 
-<!-- make form that submits a post to the search action in food trucks controller -->
-<%=form_tag("/food_trucks/search", method: "post") do %>
-  <%= label_tag(:twitter_handle, "Search for:") %>
-  <%= text_field_tag(:twitter_handle) %>
-  <%= submit_tag("Search") %>
-<%end %>
+    <div class="col-md-3">
+
+      <!-- iterating through all the food trucks in the db -->
+      <!-- display name, handle, link? -->
+        <% FoodTruck.all.each do |food_truck| %>
+          <p><h3><b><%= food_truck.name %></b></h3></p>
+          <p><%= image_tag food_truck.image_url %></p>
+          <p><%= food_truck.description %></p>
+          <p><b>Twitter Handle:</b> <%= food_truck.handle %></p>
+        <% end %>
+    </div>
+
+    <div class="col-md-9">
+      <h1>Welcome to the Food Truck Locator</h1>
+
+      <!-- make form that submits a post to the search action in food trucks controller -->
+      <%=form_tag("/food_trucks/search", method: "post") do %>
+        <%= label_tag(:twitter_handle, "Search for:") %>
+        <%= text_field_tag(:twitter_handle) %>
+        <%= submit_tag("Search") %>
+      <%end %>
+    </div>
+
+  </div>
+</div>
+

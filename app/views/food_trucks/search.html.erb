@@ -1,11 +1,27 @@
-<% if flash[:notice] %>
-  <div class="notice"><%= flash[:notice] %></div>
-<% end %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <% if flash[:notice] %>
+      <div class="notice"><%= flash[:notice] %></div>
+    <% end %>
+  </div>
+</div>
 
-<h1>Result</h1>
-<p>Tweet: <%= @tweet.text %></p>
-<p>FoodTruck: <%= @tweet.user.name %></p>
-<p>Truck Description: <%= @tweet.user.description %></p>
-<p>Number of Favorites: <%= @tweet.favorite_count %></p>
+<br>
 
-<p>Link: <a href="https://twitter.com<%= @tweet.url.path %>">here</a></p>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <p>FoodTruck: <a href="https://twitter.com<%= @tweet.user.url.path %>"><%= @tweet.user.name %></a></p>
+    <p>Truck Description: <%= @tweet.user.description %></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="tweet" align="center">
+      <blockquote class="twitter-tweet" lang="en">
+          <p><%= @tweet.text %></p>
+          <a href="https://twitter.com<%= @tweet.url.path %>">Link</a>
+      </blockquote>
+      <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
+</div>
+
