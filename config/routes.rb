@@ -6,11 +6,17 @@ Rails.application.routes.draw do
    # root to:'static_pages#index'
 
   # home page
-  get "/" => 'static_pages#index'
+
+  root to: 'static_pages#index'
+  # get "/" => 'static_pages#index'
   
   # to search based on a twitter handle
   post '/food_trucks/search' => 'food_trucks#search'
 
+  resources :food_trucks, :only => [:show]
+
+  get "/auth/twitter/callback" => "sessions#create"
+  get "/signout" => "sessions#destroy", :as => :signout
   #post '/food_trucks/:id' => 'food_trucks#show'
 
   #post '/random_food_trucks/random' => 'random_food_trucks#random'
@@ -18,7 +24,7 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-     resources :food_trucks, :only => [:show]
+     
 
   # Example resource route with options:
   #   resources :products do

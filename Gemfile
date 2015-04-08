@@ -21,6 +21,8 @@ gem 'twitter'
 # to protect my keys and secrets
 gem 'figaro'
 
+gem 'omniauth-twitter'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
