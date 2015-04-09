@@ -38,9 +38,11 @@
       <%end %>
       <br>
       <% if FoodTruck.count > 0 %>
-        <%= link_to "Random Food Truck", food_truck_path(@random_food_truck) %>
+        <%= link_to "Random Food Truck", food_truck_path(@random_food_truck), :class => "btn btn-primary" %>
       <% end %>
-      <p><%= link_to "See All Food Trucks", food_trucks_path %></p>
+      <br>
+      <br>
+      <p><%= link_to "See All Food Trucks", food_trucks_path, :class => "btn btn-primary" %></p>
     </div>
 
   </div>
