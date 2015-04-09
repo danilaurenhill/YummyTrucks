@@ -18,11 +18,12 @@
 
       <!-- iterating through all the food trucks in the db -->
       <!-- display name, handle, link? -->
-        <% FoodTruck.all.each do |food_truck| %>
-          <p><h3><b><%= food_truck.name %></b></h3></p>
-          <p><%= image_tag food_truck.image_url %></p>
-          <p><%= food_truck.description %></p>
-          <p><b>Twitter Handle:</b> <%= food_truck.handle %></p>
+        <% @food_trucks.each do |food_truck| %>
+          <a href="/food_trucks/<%= food_truck.id %>">
+            <p><h3><b><%= food_truck.name %></b></h3></p>
+            <p><%= image_tag food_truck.image_url %></p>
+          </a>
+            <p><b>Twitter Handle:</b> <%= food_truck.handle %></p>
         <% end %>
     </div>
 
@@ -31,12 +32,15 @@
 
       <!-- make form that submits a post to the search action in food trucks controller -->
       <%=form_tag("/food_trucks/search", method: "post") do %>
-        <%= label_tag(:twitter_handle, "Search for:") %>
-        <%= text_field_tag(:twitter_handle) %>
+        <%= label_tag(:handle, "Search for:") %>
+        <%= text_field_tag :handle, nil, :placeholder => "VeganLunchTruck" %>
         <%= submit_tag("Search") %>
       <%end %>
       <br>
-      <%= link_to "Random Food Truck", food_truck_path(@random_food_truck) %>
+      <% if FoodTruck.count > 0 %>
+        <%= link_to "Random Food Truck", food_truck_path(@random_food_truck) %>
+      <% end %>
+      <p><%= link_to "See All Food Trucks", food_trucks_path %></p>
     </div>
 
   </div>

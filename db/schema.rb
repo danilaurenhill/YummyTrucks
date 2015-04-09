@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150408192012) do
+ActiveRecord::Schema.define(version: 20150408193039) do
 
   create_table "food_trucks", force: :cascade do |t|
     t.string   "name"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 20150408192012) do
     t.string   "image_url"
     t.string   "description"
     t.string   "location"
+    t.string   "token"
+    t.string   "secret"
   end
 
 end

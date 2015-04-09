@@ -1,0 +1,8 @@
+<h1>Food Trucks</h1>
+<% @food_trucks.each do |food_truck| %>
+  <a href="/food_trucks/<%= food_truck.id %>">
+    <p><h3><b><%= food_truck.name %></b></h3></p>
+    <p><%= image_tag food_truck.image_url %></p>
+  </a>
+    <p><b>Twitter Handle:</b> <%= food_truck.handle %></p>
+<% end %>

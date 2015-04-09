@@ -1,5 +1,17 @@
 # Yummytrucks
 
+
+## Food Truck Handle List
+
+* WaffleTruck
+* VeganLunchTruck
+* TheTreatsTruck","Mexicue
+* TheGreenRadish
+* DomoTaco
+* UncleGussys
+* BigDsGrub
+* MilkTruckNyc
+
 ## Description
 
 Add a short description of your app.
