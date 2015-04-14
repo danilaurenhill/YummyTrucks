@@ -1,8 +1,46 @@
-<h1>Food Trucks</h1>
-<% @food_trucks.each do |food_truck| %>
-  <a href="/food_trucks/<%= food_truck.id %>">
-    <p><h3><b><%= food_truck.name %></b></h3></p>
-    <p><%= image_tag food_truck.image_url %></p>
-  </a>
-    <p><b>Twitter Handle:</b> <%= food_truck.handle %></p>
-<% end %>
+<nav class="navbar navbar-inverse navbar-fixed-top" style ='background-color: #99CCCC;'>
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+        <a class="navbar-brand" href="/" style = "font-family:Courier New;color:#333366">Yummy Trucks</a>
+      <!-- <img src="https://d13yacurqjgara.cloudfront.net/users/244530/screenshots/992081/food_teaser.png" alt="Smiley face" border="5"> -->
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/" style ='background-color: #6699CC;font-family:Courier New'>Home</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+
+<img src="http://www.designbolts.com/wp-content/uploads/2012/12/Subtle-Grey-Tileable-Pattern-For-Website-Background.jpg" class="img-responsive" id="bg" alt="Responsive image" style="height:990px; width:1450px; position: absolute;20; top: 0">
+    <div class="row">
+
+ <div class-"container">
+  <div class="row" >
+      <div class="col-md-6 col-md-offset-3">
+      <br><br>
+        <center><h1 style="color:#333366;font-family:Courier New"><b> Full Selection of Food Trucks </b></h1></center>
+        <br><br><br>
+      </div>
+
+      <br><br><br>
+
+        <% @food_trucks.each do |food_truck| %>
+        <center><div class="col-md-6 col-md-6">
+          <a href="/food_trucks/<%= food_truck.id %>" style = "color:#333366;font-family:Courier New">
+            <p style = "color:#333366;font-family:Courier New"><h3><b><%= food_truck.name %></b></h3></p>
+            <p><%= image_tag food_truck.image_url %></p>
+          </a>
+            <center><p style = "color:#333366;font-family:Courier New"><b>Twitter Handle:</b> <%= food_truck.handle %></p></center></div></center>
+            <br>
+        <% end %>
+        </div>
+      </div>
+  

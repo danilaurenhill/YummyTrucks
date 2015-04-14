@@ -5,8 +5,9 @@
 
 * WaffleTruck
 * VeganLunchTruck
-* TheTreatsTruck","Mexicue
-* TheGreenRadish
+* TheTreatsTruck
+* Mexicue
+* TheGreenRadish1
 * DomoTaco
 * UncleGussys
 * BigDsGrub

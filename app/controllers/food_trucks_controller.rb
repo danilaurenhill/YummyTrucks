@@ -2,13 +2,16 @@ class FoodTrucksController < ApplicationController
   before_action :set_food_truck, only: [:show]
 
   def search
-    handle = search_params[:handle].downcase
-    @food_truck = FoodTruck.find_by(:handle => handle)
-    if @food_truck.nil?
-      @food_truck = FoodTruck.add_truck_to_database(handle)
-    end
-    redirect_to food_truck_path(@food_truck)
-  end
+   handle = search_params[:handle].downcase  
+   if FoodTruck.valid_handle?(handle)
+     @food_truck = FoodTruck.find_by(:handle => handle) 
+     @food_truck ||= FoodTruck.add_truck_to_database(handle)
+     redirect_to food_truck_path(@food_truck)
+   else
+     flash[:notice] = "That's not a valid Twitter handle man! Try again."
+     redirect_to root_url
+   end
+ end
 
   def show
     @food_truck = FoodTruck.find(params[:id])

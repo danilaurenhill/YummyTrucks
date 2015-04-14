@@ -12,6 +12,13 @@ class FoodTruck < ActiveRecord::Base
     food_truck_account.status
   end
 
+  def self.valid_handle?(twitter_handle)
+     get_client.user(twitter_handle)
+     true
+ rescue Twitter::Error::NotFound
+     false
+ end
+
   def self.add_truck_to_database(twitter_handle)
     client = get_client
     info = client.user(twitter_handle)

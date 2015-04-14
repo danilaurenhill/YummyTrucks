@@ -1,51 +1,116 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" style ='background-color: #99CCCC;'>
+    <div class="container">
+
+       <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/" style = "font-family:Courier New;color:#333366">Yummy Trucks</a>
 
 
-<div class="container">
-  <div class="row">
+       </div>
+       <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/food_trucks" style ='background-color: #6699CC;font-family:Courier New;'>All FoodTrucks</a></li>
+          
+        </ul>
+       </div><!--/.nav-collapse -->
+      </div>
+    </nav>
 
-    <div class="col-md-3">
+   
 
-      <% if current_user %>
-        <img src="<%= current_user.image_url %>">
-        <p>Welcome <%= current_user.name %>!<p>
-        <p><%= current_user.description %></p>
-        <p><%= current_user.location %></p>
-        <p><%= current_user.nickname %></p>
-        <%= link_to "Sign Out", signout_path %>
-      <% else %>
-        <%= link_to "Sign in with Twitter", "/auth/twitter" %>
+<!-- <div style="background-image: url('http://www.buffalospree.com/Blogs/Yum/Annual-2013/Amherst-Less-Good-Food/FoodtruckBuffalo4.jpg'); height:5000px; position: fixed;"> -->
+
+    <img src="https://sketchaway.files.wordpress.com/2011/11/project_cupcake.jpg" class="img-responsive" id="bg" alt="Responsive image" style="height:990px; width:1450px; position: absolute;20; top: 0">
+    <div class="row">
+   
+    <div class="col-md-4 col-md-offset-4">
+      <% if flash[:notice] %>
+      <center><b><div class="notice"><%= flash[:notice] %></div></b></center>
       <% end %>
+     </div>
+    </div> 
 
-      <!-- iterating through all the food trucks in the db -->
-      <!-- display name, handle, link? -->
-        <% @food_trucks.each do |food_truck| %>
-          <a href="/food_trucks/<%= food_truck.id %>">
-            <p><h3><b><%= food_truck.name %></b></h3></p>
-            <p><%= image_tag food_truck.image_url %></p>
-          </a>
-            <p><b>Twitter Handle:</b> <%= food_truck.handle %></p>
-        <% end %>
-    </div>
 
-    <div class="col-md-9">
-      <h1>Welcome to the Food Truck Locator</h1>
+<div class="wrapper">
+  <!-- <div class="container">
+  <div class="row"> -->
+  <div class="col-md-3">
 
+    <% if current_user %>
+      <img src="<%= current_user.image_url %>">
+      <p style="font-family:Courier New;color:navy"><b>Welcome <%= current_user.name %></b><p>
+      <p style="font-family:Courier New;color:navy"><%= current_user.description %></p>
+      <p style="font-family:Courier New;color:navy"><%= current_user.location %></p>
+     <!--  <p style="font-family:Courier New;color:navy"><%= current_user.nickname %></p> -->
+      <p style="font-family:Courier New"><b><%= link_to "Sign Out", signout_path %></b></p>
+    <% else %>
+      <b><%= link_to "Sign in with Twitter", "/auth/twitter" %></b>
+    <% end %>
+  </div>
+
+  <div class="col-md-9">
+    <h1 style="font-family:Courier New;color:#6699CC"><b>Welcome to the Food Truck Locator</b></h1>
+  </div>
+
+
+  <div class="row" style ="background-color: #CC6633;">
+    <div class="col-md-6 col-md-offset-3">
+     <div id='page' style='width: 600px'>
       <!-- make form that submits a post to the search action in food trucks controller -->
       <%=form_tag("/food_trucks/search", method: "post") do %>
-        <%= label_tag(:handle, "Search for:") %>
-        <%= text_field_tag :handle, nil, :placeholder => "VeganLunchTruck" %>
-        <%= submit_tag("Search") %>
+      
+      <br><br><br><br><br><br>
+
+        <center><h4><p style="font-family:Courier;color:#FF9900"><b><%= label_tag(:handle, "FoodTruck:") %>
+          <%= text_field_tag :handle, nil, :placeholder => "WaffleTruck" %>
+          <%= submit_tag("Search") %></b></p></h4></center>
       <%end %>
-      <br>
-      <% if FoodTruck.count > 0 %>
-        <%= link_to "Random Food Truck", food_truck_path(@random_food_truck), :class => "btn btn-primary" %>
-      <% end %>
-      <br>
-      <br>
-      <p><%= link_to "See All Food Trucks", food_trucks_path, :class => "btn btn-primary" %></p>
     </div>
+  </div>
+
+
+ <div class="col-md-4 col-md-offset-5">
+ <br><br>
+    <% if FoodTruck.count > 0 %>
+                <p style="font-family:Courier"><%= link_to " ** Lucky Truck ** ", food_truck_path(@random_food_truck),     :class => "btn btn-info" %>
+              <% end %>
+             <br>
+             <br>
+            <!--  <%= link_to "See All Food Trucks", food_trucks_path, :class => "btn btn-info" %></p> -->
+  </div>
+
+
+ <!--  </div> -->   
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+    <div class="container">
+      <div class="row">       
+    <!-- iterating through all the food trucks in the db -->
+      <!-- display name, handle, link? -->
+        <% @food_trucks.each do |food_truck| %>
+        <center><div class="col-md-6 col-md-6 ">
+          <a href="/food_trucks/<%= food_truck.id %>" style="font-family:Courier New;color:#333366">
+            <p style="font-family:Courier New;color:#336699"><h3><b><%= food_truck.name %></b></h3></p>
+            <p><%= image_tag food_truck.image_url %></p></a>
+          <p style="font-family:Courier New;color:#333366"><b>Twitter Handle:</b> <%= food_truck.handle %></p>
+          <p> ---------------------------------------------- </p></div></center>
+        <% end %>
+         
+      </div>
+    </div>
+
+          
+        </div>
 
   </div>
 </div>
+</div>
+
 
 
