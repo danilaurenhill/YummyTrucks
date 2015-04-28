@@ -8,7 +8,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       </button>
-        <a class="navbar-brand" href="/" style = "font-family:Courier New;color:#333366">Yummy Trucks</a>
+        <a class="navbar-brand" href="/" style = "font-family:Courier New;color:#FFFFFF">Yummy Trucks</a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
@@ -33,13 +33,13 @@
 </div>
 </div>
 
-<!-- <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+<center><div class="row">
+    <div class="col-md-6 col-md-offset-3" >
       <% if flash[:notice] %>
-        <div class="notice"><%= flash[:notice] %></div>
+       <b><div class="notice" style="color:#333366"><%= flash[:notice] %></div></b>
       <% end %>
     </div>
-  </div> -->
+  </div></center>
 
 <div class="row">
     <div class= "col-md-6 col-md-offset-3">
@@ -56,7 +56,8 @@
 
   <div class="row">
     <div class= "col-md-6 col-md-offset-3">
-      <center><p><%= image_tag @food_truck.image_url %></p></center>
+      <center><p><%= image_tag @food_truck.image_url, :style => "border:5px solid #6699CC
+"%></p></center>
       <center><p style="color:#333366;font-family:Courier New;font-size:20px"><b><%= @food_truck.description %></b></p></center>
       <center><p style="color:#333366;font-family:Courier New;font-size:20px"><b>Twitter Handle: <%= @food_truck.handle %></b></p></center>
       <center><p style="color:#333366;font-family:Courier New;font-size:20px"><b>Website: <%= @food_truck.website %></b></p></center>
@@ -70,13 +71,14 @@
   </div>
 
   <div class="row">
-  <div class= "col-md-6 col-md-offset-3">
-    <div class="tweet" align="center">
+  <div class= "col-md-6 col-md-offset-3" >
+    <div class="tweet" align="center" >
         <blockquote class="twitter-tweet" lang="en">
             <p><%= @tweet.text %></p>
             <a href="https://twitter.com<%= @tweet.url.path %>">Link</a>
         </blockquote>
-        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <script async src="//platform.twitter.com/widgets.js" charset="utf-8
+" ></script>
     </div>
     </div>
       <br>
@@ -87,19 +89,17 @@
     <div class="col-md-4 col-md-offset-4">
       <% if current_user %>
           <%= form_tag("/users/#{current_user.id}/tweet") do %>
-            <%= hidden_field_tag "food_truck[id]", @food_truck.id %>
-            <%= label_tag("user[tweet_content]", "Tweet at @#{@food_truck.handle}") %>
-            <%= text_field_tag "user[tweet_content]" %>
-            <br>
-            <br>
-            <center><p><%= submit_tag "Send Tweet" %></p></center>
+            <%= hidden_field_tag "food_truck[id]", @food_truck.id %><br>
+            <center><%= label_tag("user[tweet_content]", "Tweet at @#{@food_truck.handle}") %>
+            <%= text_field_tag "user[tweet_content]" %></center><br>
+            <center><%= submit_tag "Send Tweet", :class => "btn btn-info btn-sm", :style => "border:5px solid #6699CC" %></center>
           <% end %>
       <% else %>
           <p>You must log in to send a tweet.</p>
       <% end %>
         <br>
         <br>
-      <center><p><%= link_to "See All Food Trucks", food_trucks_path, :class => "btn btn-info btn-sm" %></p></center>
+      <center><p><%= link_to "See All Food Trucks", food_trucks_path, :class => "btn btn-warning btn-sm", :style => "border:5px solid #6699CC" %></p></center>
       <!-- <i class="fa fa-film"></i> -->
         <br>
         <br>

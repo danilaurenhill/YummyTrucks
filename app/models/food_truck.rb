@@ -5,6 +5,7 @@ class FoodTruck < ActiveRecord::Base
   DESIRABLE_WORDS = [" ave ", " ave.", "avenue", "st.", " st ", "street", "ln", "lane", " sq ", " & ", "Bway", "square"]
   REGEXES = [/\dst /, /\dnd/, /\drd/, /\dth /]
   UNDESIRABLE_WORDS = ["street food", "street cart", "@square"]
+  # HANDLES = ["WaffleTruck", "VeganLunchTruck", "TheTreatsTruck"]
  
   def self.get_newest_tweet(handle)
     client = get_client
@@ -12,12 +13,19 @@ class FoodTruck < ActiveRecord::Base
     food_truck_account.status
   end
 
+  # def self.seed_database
+  #   HANDLES.each do |handle|
+  #     add_truck_to_database(handle)
+  #   end
+  # end
+
   def self.valid_handle?(twitter_handle)
      get_client.user(twitter_handle)
      true
  rescue Twitter::Error::NotFound
      false
  end
+
 
   def self.add_truck_to_database(twitter_handle)
     client = get_client
